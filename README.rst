@@ -84,6 +84,12 @@ the previous statement as unfunny. (Unfortunately, right now, it still says
 
 scottbot trained "when is the freeze date for 1.2.3" as a "notfunny" example.
 
+You can also train scottbot explicity by telling it a funny phase using the
+following syntax::
+
+    <foo> mscott: "foo bar" is funny
+    <mscott> ok!
+
 
 Using Bootstrap Data
 ====================
@@ -125,8 +131,6 @@ TODO
 ====
 
 * Train/bootstrap with `data from Twitter`_.
-
-* Train phrases: ``scottbot: "foo bar" is funny`` (or something).
 
 * A better way to train correct negatives.
 
