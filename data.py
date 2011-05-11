@@ -32,6 +32,7 @@ def load_data(filename, host, port, db):
     for k in KEYS:
         rc.hmset(k, data[k])
 
+
 if __name__ == '__main__':
     (opts, args) = parser.parse_args()
     filename, host, port, db = opts.filename, opts.host, opts.port, opts.db
