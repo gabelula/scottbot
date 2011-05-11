@@ -60,7 +60,8 @@ client.addListener("error", function(msg) {
 });
 
 client.addListener("message", function(from, to, message) {
-    var target, isChannel = false;
+    var target, isChannel = false,
+        nick = new RegExp('^' + options.nick + '[:,]\s*', 'i');
     if (to.indexOf("#") == 0) {
         target = to;
         isChannel = true;
@@ -69,20 +70,21 @@ client.addListener("message", function(from, to, message) {
     }
 
     if (isChannel) {
-        if (message.indexOf(options.nick) == 0) {
-            if (message.match(/no/i)) {
+        if (message.match(nick) {
+            message = message.replace(nick, '').replace(/\s*$/, '');
+            if (message.match(/^no$/i)) {
                 if (lastLine[target]) {
                     bayes.train(lastLine[target], "notfunny", function() {
                         client.say(target, "sorry :(");
                     });
                 }
-            } else if (message.match(/yes/i)) {
+            } else if (message.match(/^yes$/i)) {
                 if (lastLine[target]) {
                     bayes.train(lastLine[target], "funny", function() {
                         client.say(target, "ok!");
                     });
                 }
-            } else if (message.match(/lol/i)) {
+            } else if (message.match(/^lol$/i)) {
                 if (lastLine[target]) {
                     bayes.train(lastLine[target], "funny", function() {});
                 }
