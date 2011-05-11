@@ -71,19 +71,25 @@ client.addListener("message", function(from, to, message) {
     if (isChannel) {
         if (message.indexOf(options.nick) == 0) {
             if (message.match(/no/i)) {
-                bayes.train(lastLine[target], "notfunny", function() {
-                    client.say(target, "sorry :(");
-                });
+                if (lastLine[target]) {
+                    bayes.train(lastLine[target], "notfunny", function() {
+                        client.say(target, "sorry :(");
+                    });
+                }
             } else if (message.match(/yes/i)) {
-                bayes.train(lastLine[target], "funny", function() {
-                    client.say(target, "ok!");
-                });
+                if (lastLine[target]) {
+                    bayes.train(lastLine[target], "funny", function() {
+                        client.say(target, "ok!");
+                    });
+                }
             } else if (message.match(/lol/i)) {
-                bayes.train(lastLine[target], "funny", function() {});
+                if (lastLine[target]) {
+                    bayes.train(lastLine[target], "funny", function() {});
+                }
             } else if (message.match(/botsnack/i)) {
                 client.say(target, "nom nom nom");
             } else if (message.match(/".*" is funny/i)) {
-                phrase = message.match(/".*"/i)[0].slice(1,-1);
+                phrase = message.match(/".*"/i)[0].slice(1, -1);
                 bayes.train(phrase, "funny", function() {
                     client.say(target, "ok!");
                 });
