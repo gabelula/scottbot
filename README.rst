@@ -85,24 +85,38 @@ the previous statement as unfunny. (Unfortunately, right now, it still says
 scottbot trained "when is the freeze date for 1.2.3" as a "notfunny" example.
 
 
-Bootstrapping
--------------
+Using Bootstrap Data
+====================
 
-To get scottbot started, I put it into an otherwise empty IRC channel and just
-fed it a few "funny" and "notfunny" messages, giving it feedback on each one.
-Within a few dozen it was getting pretty good at this. (Which, coincidentally,
-is what she said.)
+It can take a while to train scottbot, especially if you don't have time to sit
+there and teach it. Now there's some training data to get your instance
+started!
+
+There is a simple Python script that can load or dump the data from Redis. It
+requires:
+
+* Python 2.6 or better.
+* The Python Redis client. (``pip install redis`` should do it.)
+
+The data is in ``twss.json``, and the script to load it is ``data.py``. Run
+``./data.py -h`` to get all the options, then do one of the following::
+
+    # Load data into Redis.
+    ./data.py [options] load
+
+    # Dump data to JSON.
+    ./data.py [options] dump
+
+If Python isn't your jam, it shouldn't be too difficult to port ``data.py``
+into any language with a Redis client implementation.
 
 
 Sharing Training Data
 ---------------------
 
-1) I really hope your Redis instance is persistent. 2) Multiple scottbot
-instances can talk to the same Redis instance to share knowledge.
-
-Right now, I'm running two, one connected to a local ircd so I can feed it
-training info, and one connected to a real IRC network. Since they both talk to
-the same Redis, training in one helps the other.
+Multiple instances of scottbot can share the same Redis backend, so they can
+share training data and learn together. The instances I have running on Mozilla
+IRC and on Freenode share the same DB.
 
 
 .. _TODO:
@@ -113,8 +127,6 @@ TODO
 * Train/bootstrap with `data from Twitter`_.
 
 * Train phrases: ``scottbot: "foo bar" is funny`` (or something).
-
-* Some local bootstrap data and a way to load it.
 
 * A better way to train correct negatives.
 
