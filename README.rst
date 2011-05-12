@@ -12,6 +12,10 @@ Requirements
 * Node_. I'm running 0.4.5. I assume anything that supports the libraries will
   work.
 
+* Npm_. Then install the dependencies with:
+
+    npm install .
+
 * Redis_. I'm running 2.2.5. Any 2.2.x or higher is probably fine.
 
 * A sense of humor and some patience.
@@ -20,6 +24,8 @@ Requirements
 
 .. _Node: http://nodejs.org/
 .. _Redis: http://redis.io/
+.. _Npm: http://npmjs.org/
+
 
 
 Running

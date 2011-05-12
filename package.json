@@ -1,0 +1,15 @@
+{
+    "name": "scottbot",
+    "description": "Michael Scott in IRC bot form",
+    "version": "0.1.0",
+    "repository": {
+        "type": "git",
+        "url": "http://github.com/jsocol/scottbot.git"
+    },
+    "dependencies" : {
+        "brain" : ">=0.3.4",
+        "irc" : ">=0.2.0",
+        "nomnom" : ">=0.4.2",
+        "twitter" : ">=0.1.17"
+    }
+}
