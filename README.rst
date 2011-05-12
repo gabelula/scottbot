@@ -104,23 +104,16 @@ It can take a while to train scottbot, especially if you don't have time to sit
 there and teach it. Now there's some training data to get your instance
 started!
 
-There is a simple Python script that can load or dump the data from Redis. It
-requires:
+There is a simple script that can load or dump the data from Redis.
 
-* Python 2.6 or better.
-* The Python Redis client. (``pip install redis`` should do it.)
-
-The data is in ``twss.json``, and the script to load it is ``data.py``. Run
-``./data.py -h`` to get all the options, then do one of the following::
+The data is in ``twss.json``, and the script to load it is ``data.js``. Run
+``node data.js -h`` to get all the options, then do one of the following::
 
     # Load data into Redis.
-    ./data.py [options] load
+    node data.js [options] load
 
     # Dump data to JSON.
-    ./data.py [options] dump
-
-If Python isn't your jam, it shouldn't be too difficult to port ``data.py``
-into any language with a Redis client implementation.
+    node data.js [options] dump
 
 
 Sharing Training Data
