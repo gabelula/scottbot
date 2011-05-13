@@ -26,7 +26,6 @@ parser.parseArgs();
 
 
 function load(options) {
-    var file = path
     fs.readFile(options.filename, function(err, contents) {
         if(err) throw err;
         var json = JSON.parse(contents);
