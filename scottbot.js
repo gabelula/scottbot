@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 var brain = require("brain"),
     irc = require("irc"),
     options = require("nomnom").opts({
